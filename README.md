@@ -1,0 +1,1 @@
+link para acceder al diagrama de clases: https://drive.google.com/file/d/1_mnO0g1LHD-Qiq5tqy6mILmVj9zkuntE/view?usp=sharing Consignas TPO: [Ver PDF 1C_2025_TPO](https://uadeeduar.sharepoint.com/sites/Section_511320/Documentos%20compartidos/General/1C_2025_TPO.pdf?CT=1747269222701&OR=ItemsView&wdOrigin=TEAMSFILE.FILEBROWSER.DOCUMENTLIBRARY)
