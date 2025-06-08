@@ -1,4 +1,4 @@
 package modelo;
 
-public class JavaEmail {
+public class JavaEmail implements AdapterEmail {
 }

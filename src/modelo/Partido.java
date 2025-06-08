@@ -10,13 +10,14 @@ public class Partido {
      Ubicacion ubicacion;
      Date horario;
      Jugador organizador;
+     EstrategiaDeEmparejamiento estrategia;
 
 
      public void configurarPartido(){
 
      }
 
-     public Partido(State estado, Deporte tipo, int cantJugadores, Double duracion, Ubicacion ubicacion, Date horario, Jugador organizador) {
+     public Partido(State estado, Deporte tipo, int cantJugadores, Double duracion, Ubicacion ubicacion, Date horario, Jugador organizador, EstrategiaDeEmparejamiento estrategia) {
           this.estado = estado;
           this.tipo = tipo;
           this.cantJugadores = cantJugadores;
@@ -24,6 +25,7 @@ public class Partido {
           this.ubicacion = ubicacion;
           this.horario = horario;
           this.organizador = organizador;
+          this.estrategia = estrategia;
      }
 
      public State getEstado() {
@@ -80,6 +82,10 @@ public class Partido {
 
      public void setOrganizador(Jugador organizador) {
           this.organizador = organizador;
+     }
+
+     public void notificar(){
+
      }
 
      @Override

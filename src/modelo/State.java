@@ -1,5 +1,11 @@
 package modelo;
 
-public interface State {
+public class State {
+
+    Partido partido;
     public void cambiarEstado(Estado estado);
+
+    public State(Partido partido) {
+        this.partido = partido;
+    }
 }

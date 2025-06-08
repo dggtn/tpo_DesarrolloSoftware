@@ -1,4 +1,8 @@
 package modelo;
 
-public class FabricaEstrategiaPush {
+public class FabricaEstrategiaPush extends Factory {
+    @Override
+    public EstrategiaNotificacion crearEstrategiaNotificacion() {
+        return new NotificacionPush();
+    }
 }

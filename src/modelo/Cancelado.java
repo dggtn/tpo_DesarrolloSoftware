@@ -1,4 +1,8 @@
 package modelo;
 
-public class Cancelado implements State{
+public class Cancelado extends State{
+
+    public Cancelado(Partido partido) {
+        super(partido);
+    }
 }

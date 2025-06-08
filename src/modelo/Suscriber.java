@@ -1,5 +1,5 @@
 package modelo;
 
 public interface Suscriber {
-    public void actualizarPartido(Partido partido);
+    void actualizarPartido(Partido partido);
 }

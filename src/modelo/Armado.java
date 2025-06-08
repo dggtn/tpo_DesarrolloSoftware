@@ -1,4 +1,8 @@
 package modelo;
 
-public class Armado implements State {
+public class Armado extends State {
+
+    public Armado(Partido partido) {
+        super(partido);
+    }
 }

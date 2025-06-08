@@ -1,4 +1,8 @@
 package modelo;
 
-public class Confirmado implements State{
+public class Confirmado extends State{
+
+    public Confirmado(Partido partido) {
+        super(partido);
+    }
 }

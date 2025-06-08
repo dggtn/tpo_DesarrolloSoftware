@@ -1,4 +1,5 @@
 package modelo;
 
-public class NotificacionPush {
+public class NotificacionPush implements AdapterPush{
+
 }

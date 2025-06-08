@@ -1,4 +1,4 @@
 package modelo;
 
-public class NotificacionEmail {
+public class NotificacionEmail implements AdapterEmail{
 }

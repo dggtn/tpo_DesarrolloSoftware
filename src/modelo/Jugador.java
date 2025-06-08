@@ -1,6 +1,6 @@
 package modelo;
 
-public class Jugador {
+public class Jugador implements Suscriber {
     String nombre;
     String email;
     String contrasena;
@@ -112,6 +112,11 @@ public class Jugador {
                 ", zona=" + zona +
                 ", partido=" + partido +
                 '}';
+    }
+
+    @Override
+    public void actualizarPartido(Partido partido) {
+
     }
 }
 
