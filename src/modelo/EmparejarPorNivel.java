@@ -1,4 +1,8 @@
 package modelo;
 
-public interface EmparejarPorNivel {
+public class EmparejarPorNivel implements EstrategiaDeEmparejamiento {
+    @Override
+    public void emparejar(Jugador jugador) {
+
+    }
 }
