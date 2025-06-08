@@ -9,7 +9,12 @@ public class Partido {
      Double duracion;
      Ubicacion ubicacion;
      Date horario;
+     Jugador organizador;
 
 
+     public void configurarPartido(){
 
+     }
 }
+
+
