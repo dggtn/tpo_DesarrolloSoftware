@@ -1,9 +1,12 @@
-package vista;
+package controlador;
 
 import modelo.Partido;
 import modelo.Teclado;
 import modelo.Ubicacion;
 import modelo.Usuario;
+import vista.PantallaCrearPartido;
+import vista.PantallaRegistro;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

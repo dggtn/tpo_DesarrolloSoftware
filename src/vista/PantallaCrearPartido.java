@@ -1,8 +1,7 @@
 package vista;
 
-import modelo.Partido;
-import modelo.Teclado;
-import modelo.Ubicacion;
+import modelo.*;
+
 import java.time.LocalDate;
 
 
@@ -25,8 +24,10 @@ public class PantallaCrearPartido {
 
         int numero = this.teclado.leerNumeroEntero(" Ingresa ubicación:", "El numero de domicilio debe ser un numero entero");
         String calle = teclado.leerTexto(" Ingresa calle:");
-
+        State estado = new Inicial();
+        Deporte deporte = new Deporte();
         Ubicacion ubicacion = new Ubicacion(numero, calle);
-        return new Partido("Inicial",tipo,cantidad,duracion,horario,ubicacion);
+        Jugador jugador = new Jugador()
+        return new Partido(estado,tipo,cantidad,duracion,ubicacion,);
     }
 }
