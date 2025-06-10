@@ -12,8 +12,11 @@ public class Partido {
      Jugador organizador;
      EstrategiaDeEmparejamiento estrategia;
 
+    public Partido(String confirmado, String descripciónDePrueba, int cantJugadores) {
+    }
 
-     public void configurarPartido(){
+
+    public void configurarPartido(){
 
      }
 
@@ -28,7 +31,10 @@ public class Partido {
           this.estrategia = estrategia;
      }
 
-     public State getEstado() {
+    public Partido() {
+    }
+
+    public State getEstado() {
           return estado;
      }
 
