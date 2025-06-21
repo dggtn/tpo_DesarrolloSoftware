@@ -1,4 +1,4 @@
-package modelo;
+package controlador;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,16 +6,18 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Teclado {
+public class TecladoController {
 
 
     private final Scanner scanner;
 
-    public Teclado() {
+    public TecladoController() {
+
         this.scanner = new Scanner(System.in);
     }
 
     public String leerLinea() {
+
         return this.scanner.nextLine();
     }
 

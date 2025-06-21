@@ -1,5 +1,7 @@
 package modelo;
 
+import Repository.JugadorRepositorio;
+
 public class Jugador implements Suscriber {
     String nombre;
     String email;
@@ -8,8 +10,9 @@ public class Jugador implements Suscriber {
     Nivel nivelJuego;
     Ubicacion zona;
     Partido partido;
+    JugadorRepositorio repositorio;
 
-    public Jugador(String nombre, String email, String contrasena, Deporte deporteFavorito, Nivel nivelJuego, Ubicacion zona, Partido partido) {
+    public Jugador(String nombre, String email, String contrasena) {
         this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;

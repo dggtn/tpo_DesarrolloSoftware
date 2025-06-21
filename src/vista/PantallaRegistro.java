@@ -1,33 +1,45 @@
 package vista;
 
-import modelo.Teclado;
-import modelo.Ubicacion;
-import modelo.Usuario;
+import controlador.RegistroController;
+import controlador.TecladoController;
 
-import java.time.LocalDate;
 
-public class PantallaRegistro {
+public class PantallaRegistro extends Pantalla {
+    private final RegistroController registro;
+    public PantallaRegistro( RegistroController registro,TecladoController teclado) {
+        super(teclado);
+        this.registro = registro;
 
-    private final Teclado teclado;
-
-    public PantallaRegistro(Teclado teclado) {
-        this.teclado = teclado;
     }
 
-   public Usuario registrarse() {
+   public void registrarse() {
+    System.out.println("Ingresa tu nombre de usuario:");
+    String nombre = teclado.leerLinea();
+    registro.setNombre(nombre);
+    System.out.println("Ingresa tu correo electrónico:");
+    String email = teclado.leerLinea();
+    registro.setNombre(email);
+    System.out.println("Ingresa tu contrasena:");
+       String contrasena = teclado.leerLinea();
+    registro.setContrasena(contrasena);
+    registro.finalizarRegistro();
+    }
+
+
+    @Override
+    public String mostrar() {
         System.out.println("Ingresa tu nombre de usuario:");
         String nombre = teclado.leerLinea();
+        registro.setNombre(nombre);
         System.out.println("Ingresa tu correo electrónico:");
-        String email =this.teclado.leerLinea();
-        System.out.println("Ubicación");
-        int numero = this.teclado.leerNumeroEntero(" Ingresa ubicación:", "El numero de domicilio debe ser un numero entero");
-        String calle = teclado.leerTexto(" Ingresa calle:");
-
-        Ubicacion ubicacion = new Ubicacion(numero, calle);
-        return new Usuario(nombre, email, ubicacion);
+        String email = teclado.leerLinea();
+        registro.setNombre(email);
+        System.out.println("Ingresa tu contrasena:");
+        String contrasena = teclado.leerLinea();
+        registro.setContrasena(contrasena);
+        registro.finalizarRegistro();
+        return "fin";
     }
-
-
 }
 
 

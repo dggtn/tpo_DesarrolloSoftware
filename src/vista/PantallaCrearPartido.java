@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.TecladoController;
 import modelo.*;
 
 import java.time.LocalDate;
@@ -7,9 +8,9 @@ import java.time.LocalDate;
 
 public class PantallaCrearPartido {
 
-    private final Teclado teclado;
+    private final TecladoController teclado;
 
-    public  PantallaCrearPartido(Teclado teclado) {
+    public  PantallaCrearPartido(TecladoController teclado) {
         this.teclado = teclado;
     }
     public void crearPartido() {
@@ -20,14 +21,14 @@ public class PantallaCrearPartido {
         int cantidad =this.teclado.leerNumeroEntero("Ingresa duración encuentro:","debe ser un numero entero");;
         double duracion =this.teclado.leerNumeroEntero("Ingresa duración encuentro:","debe ser un numero entero");
         System.out.println("Ubicación");
-        LocalDate horario =this.teclado.leerFecha("Ingresa fecha del  encuentro:","error,ingresa en este formato: dd/mm/yyy")
+        LocalDate horario =this.teclado.leerFecha("Ingresa fecha del  encuentro:","error,ingresa en este formato: dd/mm/yyy");
 
         int numero = this.teclado.leerNumeroEntero(" Ingresa ubicación:", "El numero de domicilio debe ser un numero entero");
         String calle = teclado.leerTexto(" Ingresa calle:");
         State estado = new Inicial();
         Deporte deporte = new Deporte();
         Ubicacion ubicacion = new Ubicacion(numero, calle);
-        Jugador jugador = new Jugador()
-        return new Partido(estado,tipo,cantidad,duracion,ubicacion,);
+        //Jugador jugador = new Jugador()
+       // return new Partido(estado,tipo,cantidad,duracion,ubicacion,);
     }
 }
