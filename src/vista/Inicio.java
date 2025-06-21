@@ -1,6 +1,14 @@
 package vista;
 
-public class Inicio {
+import controlador.TecladoController;
+
+import java.util.Scanner;
+
+public class Inicio extends Pantalla {
+
+    protected Inicio(TecladoController teclado) {
+        super(teclado);
+    }
 
     public void comenzarAplicacion() {
         Scanner teclado = new Scanner(System.in);
@@ -15,7 +23,7 @@ public class Inicio {
                     0 - Salir
                     """;
             System.out.println(menu);
-            opcion = this.teclado.leerTexto("Opcion a elegir: ").charAt(0);
+            opcion = teclado.leerTexto("Opcion a elegir: ").charAt(0);
 
             switch (opcion) {
                 case 'a':

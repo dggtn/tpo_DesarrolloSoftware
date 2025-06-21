@@ -1,4 +1,8 @@
 package vista;
 
-public class SignUp {
+public class SignUp extends Pantalla{
+    @Override
+    public String mostrar() {
+        return "";
+    }
 }
