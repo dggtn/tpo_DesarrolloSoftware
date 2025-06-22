@@ -1,8 +1,16 @@
 package vista;
 
-public class Login extends Pantalla{
+import controlador.TecladoController;
+
+public class Login extends Pantalla {
+
+    public Login(TecladoController teclado) {
+        super(teclado);
+    }
+
     @Override
     public String mostrar() {
-        return "";
+        System.out.println("ME FALTO HACER EL LOGIN");
+        return "Inicio";
     }
 }

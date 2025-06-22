@@ -2,46 +2,50 @@ package vista;
 
 import controlador.TecladoController;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Inicio extends Pantalla {
-
-    protected Inicio(TecladoController teclado) {
+    public Inicio(TecladoController teclado) {
         super(teclado);
     }
 
-    public void comenzarAplicacion() {
-        Scanner teclado = new Scanner(System.in);
-
+    @Override
+    public String mostrar() {
+        String opcionesValidas = "ABC";
+        String resultado = "";
         System.out.println("Bienevenido al gestor de partidos");
         char opcion = 'z';
-        while (opcion != '0') {
-            mostrarPartidos();
+        while (!opcionesValidas.contains(String.valueOf(opcion))) {
             var menu = """
-                    a - Registrarse
-                    b - Iniciar Sesión
-                    0 - Salir
+                    A - Registrarse
+                    B - Iniciar Sesión
+                    C - Salir
                     """;
             System.out.println(menu);
             opcion = teclado.leerTexto("Opcion a elegir: ").charAt(0);
-
             switch (opcion) {
-                case 'a':
-                    Usuario usuario = this.pantallaRegistro.registrarse();
-                    this.usuarios.add(usuario);
+                case 'A':
+                    resultado = "SignUp";
                     break;
-                case 'b':
-                    pantallaCrearPartido.crearPartido();
+                case 'B':
+                    resultado = "Login";
                     break;
-                case '0':
-                    System.out.println("Cerrando la aplicación...");
+                case 'C':
+                    resultado = "Fin";
                     break;
                 default:
                     System.out.println("Opción inválida");
+                    return "";
             }
 
         }
 
+        System.out.println("Yendo a " + resultado);
+
+        return resultado;
+    }
+}
     //redirige a login o registro
     //lee entrada usuario
-}
