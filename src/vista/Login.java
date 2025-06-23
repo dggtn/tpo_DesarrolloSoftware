@@ -1,37 +1,32 @@
 package vista;
 
-import controlador.RegistroController;
-import controlador.TecladoController;
+import controlador.ControladorDeLogin;
 
 public class Login extends Pantalla {
-    private final IniciarSesionController inicioSesion;
-public Login( TecladoController teclado,IniciarSesionController inicioSesion) {
-    super(teclado);
-    this.inicioSesion = inicioSesion;
 
+    private final ControladorDeLogin controladorDeLogin;
+    public Login(ControladorDeLogin controladorDeLogin) {
+        this.controladorDeLogin = controladorDeLogin;
+    }
+
+    @Override
+    public String mostrar() {
+
+        boolean loginExitoso, cancelarLogin = false;
+
+        do {
+
+            String email = teclado.leerTexto("Ingresá tu email");
+            String password = teclado.leerTexto("Ingresá tu contraseña");
+
+            loginExitoso = controladorDeLogin.autenticar(email, password);
+
+            if (!loginExitoso) {
+                char letra = teclado.leerTexto("Email o contraseña inválido. Ingrese cualquier tecla para continuar o 'F' para cancelar").charAt(0);
+                cancelarLogin = letra == 'F';
+            }
+        }while (!loginExitoso && !cancelarLogin);
+
+        return loginExitoso ? "Home" : "Inicio";
+    }
 }
-
-public void iniciarSesion() {
-    System.out.println("Ingresa tu correo electrónico:");
-    String email = teclado.leerLinea();
-    Login.setEmail(email);
-    System.out.println("Ingresa tu contrasena:");
-    String contrasena = teclado.leerLinea();
-    Login.setContrasena(contrasena);
-    Login.finalizarRegistro();
-}
-
-
-@Override
-public String mostrar() {
-    System.out.println("Ingresa tu correo electrónico:");
-    String email = teclado.leerLinea();
-    Login.setNombre(email);
-    System.out.println("Ingresa tu contrasena:");
-    String contrasena = teclado.leerLinea();
-    Login.setContrasena(contrasena);
-    Login.finalizarRegistro();
-    return "Fin";
-}
-}
-

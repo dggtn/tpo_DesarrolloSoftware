@@ -1,34 +1,43 @@
 package vista;
 
-import controlador.TecladoController;
+import controlador.CrearPartidoController;
 import modelo.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 
-public class PantallaCrearPartido {
+public class PantallaCrearPartido extends Pantalla {
 
-    private final TecladoController teclado;
+    private final CrearPartidoController crearPartidoController;
 
-    public  PantallaCrearPartido(TecladoController teclado) {
-        this.teclado = teclado;
+    public PantallaCrearPartido(CrearPartidoController crearPartidoController) {
+        this.crearPartidoController = crearPartidoController;
     }
-    public void crearPartido() {
+    public String mostrar() {
 
-        System.out.println("Ingresa tipo de deporte:");
-        String tipo = teclado.leerLinea();
-        System.out.println("Ingresa cantidad de jugadores requeridos:");
-        int cantidad =this.teclado.leerNumeroEntero("Ingresa duración encuentro:","debe ser un numero entero");;
-        double duracion =this.teclado.leerNumeroEntero("Ingresa duración encuentro:","debe ser un numero entero");
-        System.out.println("Ubicación");
-        LocalDate horario =this.teclado.leerFecha("Ingresa fecha del  encuentro:","error,ingresa en este formato: dd/mm/yyy");
+        System.out.println("Creación de partido");
+        System.out.println("-".repeat(10));
 
-        int numero = this.teclado.leerNumeroEntero(" Ingresa ubicación:", "El numero de domicilio debe ser un numero entero");
-        String calle = teclado.leerTexto(" Ingresa calle:");
-        State estado = new Inicial();
-        Deporte deporte = new Deporte();
-        Ubicacion ubicacion = new Ubicacion(numero, calle);
-        //Jugador jugador = new Jugador()
-       // return new Partido(estado,tipo,cantidad,duracion,ubicacion,);
+        String tipoDeDeporte = teclado.leerTexto("Ingresa tipo de deporte:");
+        crearPartidoController.setTipoDeDeporte(tipoDeDeporte);
+
+        int cantidadDeJugadores = teclado.leerNumeroEntero("Ingresa cantidad de jugadores requeridos:","debe ser un numero entero");
+        crearPartidoController.setCantidadDeJugadores(cantidadDeJugadores);
+
+        String duracion = teclado.leerTexto("Ingresá duración del partido:");
+        crearPartidoController.setDuracion(duracion);
+
+        // PENDIENTE UBICACION
+
+        LocalTime horaInicio = teclado.leerHora(
+                "Ingresá la hora de inicio (HH:mm):",
+                "Formato incorrecto. Intentá nuevamente (ej: 09:45)"
+        );
+        crearPartidoController.setHoraInicio(horaInicio);
+
+        crearPartidoController.crearPartido();
+
+        return "Home";
     }
 }

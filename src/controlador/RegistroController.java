@@ -4,6 +4,7 @@ import Repository.JugadorRepositorio;
 import modelo.Deporte;
 import modelo.Jugador;
 import modelo.Nivel;
+import modelo.Usuario;
 
 public class RegistroController {
 
@@ -19,10 +20,9 @@ public class RegistroController {
     }
 
     public void finalizarRegistro(){
-        Jugador jugador = new Jugador(nombre, contrasena,email);
+        Jugador jugador = new Jugador(nombre, email, contrasena);
         repositorio.guardarJugador(jugador);
-
-
+        Usuario.logear(nombre, email);
     }
 
     public void setNombre(String nombre) {

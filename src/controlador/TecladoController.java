@@ -1,6 +1,7 @@
 package controlador;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
@@ -62,8 +63,22 @@ public class TecladoController {
         return valor;
     }
 
-
-
+    public LocalTime leerHora(String titulo, String mensajeDeError) {
+        LocalTime valor = null;
+        boolean seguirPidiendo = true;
+        System.out.println(titulo);
+        while (seguirPidiendo) {
+            try {
+                String texto = this.scanner.next();
+                valor = LocalTime.parse(texto, DateTimeFormatter.ofPattern("HH:mm"));
+                seguirPidiendo = false;
+            } catch (DateTimeParseException e) {
+                this.scanner.nextLine();
+                System.out.println(mensajeDeError);
+            }
+        }
+        return valor;
+    }
 }
 
 
