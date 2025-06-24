@@ -1,5 +1,5 @@
 import Repository.JugadorRepositorio;
-import controlador.ControladorDeLogin;
+import controlador.LoginController;
 import controlador.CrearPartidoController;
 import controlador.RegistroController;
 import modelo.Notificador;
@@ -23,7 +23,7 @@ public class Aplicacion {
         Notificador notificador = new Notificador();
 
         RegistroController controladorDeRegistro = new RegistroController(repositorioDeJugadores);
-        ControladorDeLogin controladorDeLogin = new ControladorDeLogin(repositorioDeJugadores);
+        LoginController controladorDeLogin = new LoginController(repositorioDeJugadores);
         CrearPartidoController crearPartidoController = new CrearPartidoController(notificador, repositorioDeJugadores);
 
         Pantalla inicio = new Inicio();
