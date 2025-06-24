@@ -1,5 +1,5 @@
 import Repository.JugadorRepositorio;
-import controlador.LoginController;
+import controlador.ControladorDeLogin;
 import controlador.CrearPartidoController;
 import controlador.RegistroController;
 import modelo.Notificador;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class Aplicacion {
     public static void main(String[] args) {
         Aplicacion aplicacion = new Aplicacion();
-        Usuario.logear("daniela", "dggtn@gmail.com"); //hardcodeado solo para pruebas
+        Usuario.logear("ezegiorgi", "eze.giorgi@gmail.com");
         aplicacion.iniciar("Inicio");
     }
 
@@ -23,7 +23,7 @@ public class Aplicacion {
         Notificador notificador = new Notificador();
 
         RegistroController controladorDeRegistro = new RegistroController(repositorioDeJugadores);
-        LoginController controladorDeLogin = new LoginController(repositorioDeJugadores);
+        ControladorDeLogin controladorDeLogin = new ControladorDeLogin(repositorioDeJugadores);
         CrearPartidoController crearPartidoController = new CrearPartidoController(notificador, repositorioDeJugadores);
 
         Pantalla inicio = new Inicio();

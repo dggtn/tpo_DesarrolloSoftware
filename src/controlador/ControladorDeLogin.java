@@ -6,11 +6,11 @@ import modelo.Usuario;
 
 import java.util.Optional;
 
-public class LoginController {
+public class ControladorDeLogin {
 
     private final JugadorRepositorio repositorioDeJugadores;
 
-    public LoginController(JugadorRepositorio repositorioDeJugadores) {
+    public ControladorDeLogin(JugadorRepositorio repositorioDeJugadores) {
         this.repositorioDeJugadores = repositorioDeJugadores;
     }
 

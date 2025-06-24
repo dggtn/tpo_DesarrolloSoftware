@@ -1,11 +1,11 @@
 package vista;
 
-import controlador.LoginController;
+import controlador.ControladorDeLogin;
 
 public class Login extends Pantalla {
 
-    private final LoginController controladorDeLogin;
-    public Login(LoginController controladorDeLogin) {
+    private final ControladorDeLogin controladorDeLogin;
+    public Login(ControladorDeLogin controladorDeLogin) {
         this.controladorDeLogin = controladorDeLogin;
     }
 

@@ -1,7 +1,7 @@
 package vista;
 
 import controlador.RegistroController;
-
+import controlador.TecladoController;
 
 
 public class SignUp extends Pantalla {
