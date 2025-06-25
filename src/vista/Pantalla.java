@@ -8,7 +8,7 @@ public abstract class Pantalla {
     public Pantalla() {
         this.teclado = new TecladoController();
     }
-    public abstract String mostrar();
+    public abstract Navegacion mostrar(Navegacion origen);
 
     public void limpiar() {
         System.out.println();

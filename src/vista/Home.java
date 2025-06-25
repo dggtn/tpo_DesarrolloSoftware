@@ -4,9 +4,9 @@ import modelo.Usuario;
 import java.util.Map;
 
 public class Home extends Pantalla {
-    @Override
-    public String mostrar() {
 
+    @Override
+    public Navegacion mostrar(Navegacion origen) {
         String mensajeBienvenida = "Te damos la bienvenida " + Usuario.usuarioLogueado.getEmail();
         String menu = """
             A - Crear partido
@@ -18,6 +18,7 @@ public class Home extends Pantalla {
                 'B', "ListaDePartidos",
                 'Z', "Fin"
         );
-        return Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);
+        String destino = Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);
+        return Navegacion.navegar(destino);
     }
 }

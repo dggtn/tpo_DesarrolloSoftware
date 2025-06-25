@@ -51,13 +51,22 @@ public class CrearPartidoController {
 
         repositorioDePartido.guardarPartido(partido);
 
-        // Obtener jugadores
+
 
         List<Jugador> interesados = repositorioDeJugadores.buscarPorDeporteFavorito(tipoDeDeporte);
         interesados = interesados.stream().filter(jugador -> !jugador.getEmail().equals(Usuario.usuarioLogueado.getEmail())).collect(Collectors.toList());
 
-        // Notificar a los jugadores
+
         notificador.notificar(interesados, "Se creó un partido de tu deporte favorito: " + tipoDeDeporte);
+
+    //Configurar partido para que solo puedan inscribirse segun el mismo nivel :
+//     Los partidos pueden configurarse para permitir jugadores de cualquier nivel o establecer un
+//        mínimo/máximo de nivel requerido.
+//                Análisis y Diseño Orientado a Objetos
+//        Página 2 de 2
+//        d. Se podrá definir diferentes algoritmos de emparejamiento (por cercanía, por nivel de
+//                habilidad o por historial de partidos previos).
+
 
     }
 }

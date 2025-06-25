@@ -1,15 +1,10 @@
 package vista;
-
-import controlador.TecladoController;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.sql.SQLOutput;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Inicio extends Pantalla {
+
     @Override
-    public String mostrar() {
+    public Navegacion mostrar(Navegacion origen) {
         String mensajeBienvenida = "Bienvenido al gestor de partidos";
         String menu = """
             A - Registrarse
@@ -21,6 +16,7 @@ public class Inicio extends Pantalla {
                 'B', "Login",
                 'C', "Fin"
         );
-        return Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);
+        String destino = Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);
+        return Navegacion.navegar(destino);
     }
 }

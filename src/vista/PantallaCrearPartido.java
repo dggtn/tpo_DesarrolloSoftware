@@ -1,11 +1,7 @@
 package vista;
 
 import controlador.CrearPartidoController;
-import modelo.*;
-
-import java.time.LocalDate;
 import java.time.LocalTime;
-
 
 public class PantallaCrearPartido extends Pantalla {
 
@@ -14,8 +10,9 @@ public class PantallaCrearPartido extends Pantalla {
     public PantallaCrearPartido(CrearPartidoController crearPartidoController) {
         this.crearPartidoController = crearPartidoController;
     }
-    public String mostrar() {
 
+    @Override
+    public Navegacion mostrar(Navegacion origen) {
         System.out.println("Creación de partido");
         System.out.println("-".repeat(10));
 
@@ -38,6 +35,6 @@ public class PantallaCrearPartido extends Pantalla {
 
         crearPartidoController.crearPartido();
 
-        return "Home";
+        return Navegacion.navegar("Home");
     }
 }

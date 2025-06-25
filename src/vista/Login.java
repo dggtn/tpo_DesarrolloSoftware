@@ -10,7 +10,7 @@ public class Login extends Pantalla {
     }
 
     @Override
-    public String mostrar() {
+    public Navegacion mostrar(Navegacion origen) {
 
         boolean loginExitoso, cancelarLogin = false;
 
@@ -27,6 +27,8 @@ public class Login extends Pantalla {
             }
         }while (!loginExitoso && !cancelarLogin);
 
-        return loginExitoso ? "Home" : "Inicio";
+        String destino = loginExitoso ? "Home" : "Inicio";
+
+        return Navegacion.navegar(destino);
     }
 }

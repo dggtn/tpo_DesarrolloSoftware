@@ -8,9 +8,9 @@ public class SignUp extends Pantalla {
     public SignUp(RegistroController registro) {
         this.registro = registro;
     }
-    @Override
-    public String mostrar() {
 
+    @Override
+    public Navegacion mostrar(Navegacion origen) {
         System.out.println("Ingresa tu nombre de usuario:");
         String nombre = teclado.leerLinea();
         registro.setNombre(nombre);
@@ -29,7 +29,7 @@ public class SignUp extends Pantalla {
 
         registro.finalizarRegistro();
 
-        return "Home";
+        return Navegacion.navegar("Home");
     }
 }
 

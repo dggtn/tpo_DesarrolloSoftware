@@ -1,11 +1,16 @@
 package vista;
 
-import controlador.InscripcionAPartidoController;
+import controlador.InscripcionController;
 
-public class PantallaInscribirseAPartido {
-    private final InscripcionAPartidoController inscripcion;
+public class PantallaInscribirseAPartido extends Pantalla{
+    private final InscripcionController inscripcion;
 
-    public PantallaInscribirseAPartido(InscripcionAPartidoController inscripcion) {
+    public PantallaInscribirseAPartido(InscripcionController inscripcion) {
         this.inscripcion = inscripcion;
+    }
+
+    @Override
+    public Navegacion mostrar(Navegacion origen) {
+        return Navegacion.finalizar();
     }
 }
