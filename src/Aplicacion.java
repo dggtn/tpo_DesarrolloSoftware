@@ -1,9 +1,9 @@
 import Repository.JugadorRepositorio;
-import controlador.ControladorDeLogin;
+import Repository.PartidoRepositorio;
+import controlador.LoginController;
 import controlador.CrearPartidoController;
 import controlador.RegistroController;
-import modelo.Notificador;
-import modelo.Usuario;
+import modelo.*;
 import vista.*;
 
 import java.util.HashMap;
@@ -20,11 +20,19 @@ public class Aplicacion {
 
     public Aplicacion() {
         JugadorRepositorio repositorioDeJugadores = new JugadorRepositorio();
+        PartidoRepositorio repositorioDePartidos = new PartidoRepositorio();
+
+        Factory fabricaDeNotificadores= new FabricaEstrategiaPush();
+        Factory fabricaDeNotificador= new FabricaEstrategiaEmail();
         Notificador notificador = new Notificador();
+        notificador.agregarEstrategia(fabricaDeNotificadores.crearEstrategiaNotificacion());
+        notificador.agregarEstrategia(fabricaDeNotificador.crearEstrategiaNotificacion());
+
+
 
         RegistroController controladorDeRegistro = new RegistroController(repositorioDeJugadores);
-        ControladorDeLogin controladorDeLogin = new ControladorDeLogin(repositorioDeJugadores);
-        CrearPartidoController crearPartidoController = new CrearPartidoController(notificador, repositorioDeJugadores);
+        LoginController controladorDeLogin = new LoginController(repositorioDeJugadores);
+        CrearPartidoController crearPartidoController = new CrearPartidoController(notificador, repositorioDeJugadores,repositorioDePartidos);
 
         Pantalla inicio = new Inicio();
         Pantalla registro = new SignUp(controladorDeRegistro);

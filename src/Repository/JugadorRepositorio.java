@@ -11,13 +11,12 @@ public class JugadorRepositorio {
 
    public JugadorRepositorio() {
        this.listaJugadores = new ArrayList<>();
-       // Agrego algunos jugadores de prueba
-
-       this.listaJugadores.add(new Jugador("danigtn", "dgtn@gmail.com", "123456789"));
+       this.listaJugadores.add(new Jugador("danigtn", "dgtn@gmail.com", "123456789","Futbol"));
    }
 
     public void guardarJugador(Jugador jugador){
-        this.listaJugadores.add(jugador);
+
+       this.listaJugadores.add(jugador);
     }
 
     public Optional<Jugador> buscarPorEmailYPassword(String email, String password) {
@@ -27,6 +26,12 @@ public class JugadorRepositorio {
     }
 
     public List<Jugador> buscarPorDeporteFavorito(String tipoDeDeporte) {
-       return new ArrayList<>();
+       List<Jugador> jugadoresPorDeporte = new ArrayList<>();
+        for (Jugador jugador : listaJugadores){
+            if(jugador.getDeporteFavorito().equals(tipoDeDeporte)){
+                jugadoresPorDeporte.add(jugador);
+            }
+        }
+        return jugadoresPorDeporte;
     }
 }

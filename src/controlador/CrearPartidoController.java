@@ -1,29 +1,33 @@
 package controlador;
 
 import Repository.JugadorRepositorio;
+import Repository.PartidoRepositorio;
 import modelo.*;
 
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CrearPartidoController {
 
     private final Notificador notificador;
     private final JugadorRepositorio repositorioDeJugadores;
+    private final PartidoRepositorio repositorioDePartido;
 
-    Deporte tipo;
+    String tipo;
     private int cantidadDeJugadores;
     private String duracion;
     Ubicacion ubicacion;
     Jugador organizador;
     EstrategiaDeEmparejamiento estrategia;
+
     private String tipoDeDeporte;
     private LocalTime horaInicio;
 
-    public CrearPartidoController(Notificador notificador, JugadorRepositorio repositorioDeJugadores) {
+    public CrearPartidoController(Notificador notificador, JugadorRepositorio repositorioDeJugadores, PartidoRepositorio repositorioDePartido) {
         this.notificador = notificador;
         this.repositorioDeJugadores = repositorioDeJugadores;
+        this.repositorioDePartido = repositorioDePartido;
     }
 
     public void setTipoDeDeporte(String tipoDeDeporte) {
@@ -44,12 +48,14 @@ public class CrearPartidoController {
 
     public void crearPartido() {
 
-        // Crear el partido
+        Partido partido = new Partido( tipo,  cantidadDeJugadores, duracion, horaInicio,Usuario.usuarioLogueado);
 
-        // Guardar partido
+        repositorioDePartido.guardarPartido(partido);
 
         // Obtener jugadores
+
         List<Jugador> interesados = repositorioDeJugadores.buscarPorDeporteFavorito(tipoDeDeporte);
+        interesados = interesados.stream().filter(jugador -> !jugador.getEmail().equals(Usuario.usuarioLogueado.getEmail())).collect(Collectors.toList());
 
         // Notificar a los jugadores
         notificador.notificar(interesados, "Se creó un partido de tu deporte favorito: " + tipoDeDeporte);

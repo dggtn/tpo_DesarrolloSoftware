@@ -1,34 +1,28 @@
 package modelo;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Partido {
-     State estado;
-     Deporte tipo;
-     int cantJugadores;
-     Double duracion;
-     Ubicacion ubicacion;
-     Date horario;
-     Jugador organizador;
-     EstrategiaDeEmparejamiento estrategia;
+    private State estado;
+    private  String tipo;
+    private  int cantJugadores;
+    private  String duracion;
+    private  Ubicacion ubicacion;
+    private  LocalTime horario;
+    private  Usuario organizador;
+    private  EstrategiaDeEmparejamiento estrategia;
 
-    public Partido(String confirmado, String descripciónDePrueba, int cantJugadores) {
+    public Partido(String tipo, int cantJugadores, String duracion, LocalTime horario, Usuario organizador) {
+        this.tipo = tipo;
+        this.cantJugadores = cantJugadores;
+        this.duracion = duracion;
+        this.horario = horario;
+        this.organizador = organizador;
     }
-
 
     public void configurarPartido(){
 
-     }
-
-     public Partido(State estado, Deporte tipo, int cantJugadores, Double duracion, Ubicacion ubicacion, Date horario, Jugador organizador, EstrategiaDeEmparejamiento estrategia) {
-          this.estado = estado;
-          this.tipo = tipo;
-          this.cantJugadores = cantJugadores;
-          this.duracion = duracion;
-          this.ubicacion = ubicacion;
-          this.horario = horario;
-          this.organizador = organizador;
-          this.estrategia = estrategia;
      }
 
     public Partido() {
@@ -42,11 +36,11 @@ public class Partido {
           this.estado = estado;
      }
 
-     public Deporte getTipo() {
+     public String getTipo() {
           return tipo;
      }
 
-     public void setTipo(Deporte tipo) {
+     public void setTipo(String tipo) {
           this.tipo = tipo;
      }
 
@@ -58,11 +52,11 @@ public class Partido {
           this.cantJugadores = cantJugadores;
      }
 
-     public Double getDuracion() {
+     public String getDuracion() {
           return duracion;
      }
 
-     public void setDuracion(Double duracion) {
+     public void setDuracion(String duracion) {
           this.duracion = duracion;
      }
 
@@ -74,19 +68,19 @@ public class Partido {
           this.ubicacion = ubicacion;
      }
 
-     public Date getHorario() {
+     public LocalTime getHorario() {
           return horario;
      }
 
-     public void setHorario(Date horario) {
+     public void setHorario(LocalTime horario) {
           this.horario = horario;
      }
 
-     public Jugador getOrganizador() {
+     public Usuario getOrganizador() {
           return organizador;
      }
 
-     public void setOrganizador(Jugador organizador) {
+     public void setOrganizador(Usuario organizador) {
           this.organizador = organizador;
      }
 

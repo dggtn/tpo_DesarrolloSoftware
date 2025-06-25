@@ -11,7 +11,7 @@ public class RegistroController {
     private String nombre;
     private String email;
     private String contrasena;
-    private Deporte deporteFavorito;
+    private String deporteFavorito;
     private  Nivel nivelJuego;
     private JugadorRepositorio repositorio;
 
@@ -20,7 +20,7 @@ public class RegistroController {
     }
 
     public void finalizarRegistro(){
-        Jugador jugador = new Jugador(nombre, email, contrasena);
+        Jugador jugador = new Jugador(nombre, email, contrasena,deporteFavorito);
         repositorio.guardarJugador(jugador);
         Usuario.logear(nombre, email);
     }
@@ -37,7 +37,7 @@ public class RegistroController {
         this.contrasena = contrasena;
     }
 
-    public void setDeporteFavorito(Deporte deporteFavorito) {
+    public void setDeporteFavorito(String deporteFavorito) {
         this.deporteFavorito = deporteFavorito;
     }
 

@@ -1,7 +1,6 @@
 package vista;
 
 import controlador.RegistroController;
-import controlador.TecladoController;
 
 
 public class SignUp extends Pantalla {
@@ -23,6 +22,10 @@ public class SignUp extends Pantalla {
         System.out.println("Ingresa tu contrasena:");
         String contrasena = teclado.leerLinea();
         registro.setContrasena(contrasena);
+
+        System.out.println("Ingresa tudeporte favorito:");
+        String deporteFavorito = teclado.leerLinea();
+        registro.setDeporteFavorito(deporteFavorito);
 
         registro.finalizarRegistro();
 

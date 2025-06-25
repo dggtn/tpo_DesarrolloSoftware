@@ -6,13 +6,13 @@ public class Jugador implements Suscriber {
     String nombre;
     String email;
     String contrasena;
-    Deporte deporteFavorito;
+    String deporteFavorito;
     Nivel nivelJuego;
     Ubicacion zona;
     Partido partido;
     JugadorRepositorio repositorio;
 
-    public Jugador(String nombre, String email, String contrasena) {
+    public Jugador(String nombre, String email, String contrasena,String deporteFavorito) {
         this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;
@@ -72,11 +72,11 @@ public class Jugador implements Suscriber {
         this.contrasena = contrasena;
     }
 
-    public Deporte getDeporteFavorito() {
+    public String getDeporteFavorito() {
         return deporteFavorito;
     }
 
-    public void setDeporteFavorito(Deporte deporteFavorito) {
+    public void setDeporteFavorito(String deporteFavorito) {
         this.deporteFavorito = deporteFavorito;
     }
 

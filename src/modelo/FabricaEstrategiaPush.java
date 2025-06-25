@@ -3,6 +3,6 @@ package modelo;
 public class FabricaEstrategiaPush extends Factory {
     @Override
     public EstrategiaNotificacion crearEstrategiaNotificacion() {
-        return null;
+        return new EstrategiaPush();
     }
 }
