@@ -14,7 +14,6 @@ public class CrearPartidoController {
     private final JugadorRepositorio repositorioDeJugadores;
     private final PartidoRepositorio repositorioDePartido;
 
-    String tipo;
     private int cantidadDeJugadores;
     private String duracion;
     Ubicacion ubicacion;
@@ -48,7 +47,7 @@ public class CrearPartidoController {
 
     public void crearPartido() {
 
-        Partido partido = new Partido( tipo,  cantidadDeJugadores, duracion, horaInicio,Usuario.usuarioLogueado);
+        Partido partido = new Partido( tipoDeDeporte,  cantidadDeJugadores, duracion, horaInicio,Usuario.usuarioLogueado);
 
         repositorioDePartido.guardarPartido(partido);
 

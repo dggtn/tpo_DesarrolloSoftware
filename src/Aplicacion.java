@@ -1,5 +1,6 @@
 import Repository.JugadorRepositorio;
 import Repository.PartidoRepositorio;
+import controlador.BusquedaController;
 import controlador.LoginController;
 import controlador.CrearPartidoController;
 import controlador.RegistroController;
@@ -33,18 +34,21 @@ public class Aplicacion {
         RegistroController controladorDeRegistro = new RegistroController(repositorioDeJugadores);
         LoginController controladorDeLogin = new LoginController(repositorioDeJugadores);
         CrearPartidoController crearPartidoController = new CrearPartidoController(notificador, repositorioDeJugadores,repositorioDePartidos);
+       BusquedaController busquedaController = new BusquedaController(repositorioDePartidos);
 
         Pantalla inicio = new Inicio();
         Pantalla registro = new SignUp(controladorDeRegistro);
         Pantalla login = new Login(controladorDeLogin);
         Pantalla home = new Home();
         Pantalla creacionDePartido = new PantallaCrearPartido(crearPartidoController);
+        Pantalla pantallaListaPartidos =  new PantallaListaPartidos(busquedaController);
 
         pantallas.put("Inicio", inicio);
         pantallas.put("Login", login);
         pantallas.put("SignUp", registro);
         pantallas.put("Home", home);
         pantallas.put("CreacionDePartido", creacionDePartido);
+        pantallas.put("ListaDePartidos", pantallaListaPartidos);
     }
 
     public void iniciar(String pantallaInicial){

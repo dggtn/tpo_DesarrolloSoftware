@@ -40,7 +40,7 @@ public class Jugador implements Suscriber {
 
     }
 
-    public State verEstadoPartido(Partido partido){
+    public Estado verEstadoPartido(Partido partido){
         return partido.getEstado();
     }
 

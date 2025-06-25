@@ -1,10 +1,9 @@
 package modelo;
 
 import java.time.LocalTime;
-import java.util.Date;
 
 public class Partido {
-    private State estado;
+    private Estado estado;
     private  String tipo;
     private  int cantJugadores;
     private  String duracion;
@@ -19,20 +18,23 @@ public class Partido {
         this.duracion = duracion;
         this.horario = horario;
         this.organizador = organizador;
+        this.estado = new Inicial(this);
     }
 
     public void configurarPartido(){
 
      }
 
-    public Partido() {
+    public void cambiarEstado(Estado nuevoEstado) {
+
+        this.estado = nuevoEstado;
     }
 
-    public State getEstado() {
+    public Estado getEstado() {
           return estado;
      }
 
-     public void setEstado(State estado) {
+     public void setEstado(Estado estado) {
           this.estado = estado;
      }
 

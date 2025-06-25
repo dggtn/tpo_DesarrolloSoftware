@@ -1,9 +1,11 @@
 package Repository;
 
+import modelo.Estado;
 import modelo.Partido;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class PartidoRepositorio {
@@ -15,6 +17,11 @@ public class PartidoRepositorio {
 
     public void guardarPartido(Partido partido){
         this.listaPartidos.add(partido);
+    }
+
+    public List<Partido> obtenerPartidosPorEstado (String nombreEstado){
+        return listaPartidos.stream().filter(partido -> partido.getEstado().getNombre().equals(nombreEstado)).collect(Collectors.toList());
+
     }
 }
 

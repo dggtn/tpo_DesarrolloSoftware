@@ -1,9 +1,17 @@
 package controlador;
 
-public class BusquedaController {
-    private final TecladoController teclado;
+import Repository.PartidoRepositorio;
+import modelo.Partido;
+import java.util.List;
 
-    public BusquedaController(TecladoController teclado) {
-        this.teclado = teclado;
+public class BusquedaController {
+    private final PartidoRepositorio partidos;
+
+    public BusquedaController(PartidoRepositorio partidos) {
+        this.partidos = partidos;
+    }
+
+    public List<Partido> buscarPartidosQueNecesitanJugadores(){
+        return partidos.obtenerPartidosPorEstado("Necesitamos Jugadores");
     }
 }
