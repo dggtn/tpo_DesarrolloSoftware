@@ -14,16 +14,7 @@ public class LoginController {
         this.repositorioDeJugadores = repositorioDeJugadores;
     }
 
-    public boolean autenticar(String email, String password) {
-
-        Optional<Jugador> jugadorOptional = this.repositorioDeJugadores.buscarPorEmailYPassword(email, password);
-
-        if (jugadorOptional.isPresent()) {
-            Jugador jugador = jugadorOptional.get();
-            Usuario.logear(jugador.getNombre(), jugador.getEmail());
-            return true;
-        }
-
-        return false;
+    public Optional<Jugador> autenticar(String email, String password) {
+        return this.repositorioDeJugadores.buscarPorEmailYPassword(email, password);
     }
 }

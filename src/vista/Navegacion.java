@@ -32,8 +32,11 @@ public class Navegacion {
         return contexto;
     }
 
-    public T obtenerDelContexto(String clave) {
-        Object valor = this.contexto.get(clave);
-        return (T)valor;
+    public Object obtenerDelContexto(String clave) {
+        return this.contexto.get(clave);
+    }
+
+    public void eliminarDelContexto(String clave) {
+        this.contexto.remove(clave);
     }
 }

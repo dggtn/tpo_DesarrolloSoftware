@@ -1,6 +1,7 @@
 package Repository;
 
 import modelo.Jugador;
+import modelo.Nivel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,6 @@ public class JugadorRepositorio {
 
    public JugadorRepositorio() {
        this.listaJugadores = new ArrayList<>();
-       this.listaJugadores.add(new Jugador("danigtn", "dgtn@gmail.com", "123456789","Futbol"));
    }
 
     public void guardarJugador(Jugador jugador){

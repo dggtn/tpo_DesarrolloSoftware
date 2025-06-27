@@ -1,6 +1,10 @@
 package vista;
 
 import controlador.LoginController;
+import modelo.Jugador;
+
+import java.util.Map;
+import java.util.Optional;
 
 public class Login extends Pantalla {
 
@@ -12,23 +16,22 @@ public class Login extends Pantalla {
     @Override
     public Navegacion mostrar(Navegacion origen) {
 
-        boolean loginExitoso, cancelarLogin = false;
-
-        do {
+        while(true) {
 
             String email = teclado.leerTexto("Ingresá tu email");
             String password = teclado.leerTexto("Ingresá tu contraseña");
 
-            loginExitoso = controladorDeLogin.autenticar(email, password);
+            Optional<Jugador> jugadorLogueado = controladorDeLogin.autenticar(email, password);
 
-            if (!loginExitoso) {
+            if (jugadorLogueado.isPresent()) {
+                return Navegacion.navegar(Home.class.getSimpleName(), Map.of("jugadorLogueado", jugadorLogueado.get()));
+            } else {
                 char letra = teclado.leerTexto("Email o contraseña inválido. Ingrese cualquier tecla para continuar o 'F' para cancelar").charAt(0);
-                cancelarLogin = letra == 'F';
+                if (letra == 'F') {
+                    return Navegacion.navegar(Inicio.class.getSimpleName());
+                }
             }
-        }while (!loginExitoso && !cancelarLogin);
 
-        String destino = loginExitoso ? "Home" : "Inicio";
-
-        return Navegacion.navegar(destino);
+        }
     }
 }

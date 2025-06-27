@@ -1,6 +1,8 @@
 package modelo;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Partido {
     private Estado estado;
@@ -12,12 +14,15 @@ public class Partido {
     private  Usuario organizador;
     private  EstrategiaDeEmparejamiento estrategia;
 
+    private List<Jugador> jugadoresInscriptos;
+
     public Partido(String tipo, int cantJugadores, String duracion, LocalTime horario, Usuario organizador) {
         this.tipo = tipo;
         this.cantJugadores = cantJugadores;
         this.duracion = duracion;
         this.horario = horario;
         this.organizador = organizador;
+        this.jugadoresInscriptos = new ArrayList<>();
         this.estado = new Inicial(this);
     }
 
@@ -90,6 +95,10 @@ public class Partido {
 
      }
 
+     public void agregarJugador(Jugador jugador) {
+        this.jugadoresInscriptos.add((jugador));
+     }
+
      @Override
      public String toString() {
           return "Partido{" +
@@ -102,6 +111,10 @@ public class Partido {
                   ", organizador=" + organizador +
                   '}';
      }
+
+    public int obtenerCuantosJugadoresFaltan() {
+        return this.cantJugadores - this.jugadoresInscriptos.size();
+    }
 }
 
 

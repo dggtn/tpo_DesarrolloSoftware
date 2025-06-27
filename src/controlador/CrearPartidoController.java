@@ -45,17 +45,14 @@ public class CrearPartidoController {
         this.horaInicio = horaInicio;
     }
 
-    public void crearPartido() {
+    public void crearPartido(Jugador jugadorLogueado) {
 
-        Partido partido = new Partido( tipoDeDeporte,  cantidadDeJugadores, duracion, horaInicio,Usuario.usuarioLogueado);
-
+        Partido partido = new Partido( tipoDeDeporte,  cantidadDeJugadores, duracion, horaInicio, jugadorLogueado);
+        partido.agregarJugador(jugadorLogueado);
         repositorioDePartido.guardarPartido(partido);
 
-
-
         List<Jugador> interesados = repositorioDeJugadores.buscarPorDeporteFavorito(tipoDeDeporte);
-        interesados = interesados.stream().filter(jugador -> !jugador.getEmail().equals(Usuario.usuarioLogueado.getEmail())).collect(Collectors.toList());
-
+        interesados = interesados.stream().filter(jugador -> !jugador.getEmail().equals(jugadorLogueado.getEmail())).collect(Collectors.toList());
 
         notificador.notificar(interesados, "Se creó un partido de tu deporte favorito: " + tipoDeDeporte);
 

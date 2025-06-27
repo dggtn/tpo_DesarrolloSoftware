@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.BusquedaController;
+import modelo.Jugador;
 import modelo.Partido;
 
 import java.util.List;
@@ -15,38 +16,55 @@ public class PantallaListaPartidos extends Pantalla {
 
     @Override
     public Navegacion mostrar(Navegacion origen) {
+        Jugador jugadorLogueado = (Jugador) origen.obtenerDelContexto("jugadorLogueado");
 
-        List<Partido> lista = busquedaController.buscarPartidosQueNecesitanJugadores();
-        Navegacion resultado = Navegacion.finalizar();
-        boolean cancelarVerDetalle = false;
-        boolean hayPartidoSeleccionado = false;
+        List<Partido> partidosDisponibles = busquedaController.buscarPartidosQueNecesitanJugadores(jugadorLogueado);
 
-        System.out.println("Partidos disponibles");
-        System.out.println("#".repeat(10));
-
-        int n= 0;
-        for (Partido partido : lista){
-            n+=1;
-            System.out.printf("%d - Nombre: %s Duracion: %s CantJugadores: %d",n, partido.getTipo(),
-                    partido.getDuracion(),partido.getCantJugadores());
-            System.out.println();
+        if (partidosDisponibles.isEmpty()) {
+            System.out.println("No hay partidos disponibles por el momento. Revisá más tarde.");
+            return Navegacion.navegar(Home.class.getSimpleName(), origen.getContexto());
         }
 
-        System.out.println();
-        do {
-            int opcion = this.teclado.leerNumeroEntero("Seleccioná el número de partido para ver mas detalle:", "Ingresá un número entero");
+        mostrarListadoDePartidos(partidosDisponibles);
 
-            if (opcion < 0 || opcion > lista.size()) {
-                char letra = teclado.leerTexto("Número de partido inválido. Ingrese cualquier tecla para continuar o 'F' para cancelar").charAt(0);
-                cancelarVerDetalle = letra == 'F';
+        while (true) {
+            int opcion = teclado.leerNumeroEntero(
+                    "Seleccioná el número de partido para ver más detalle:",
+                    "Ingresá un número entero"
+            );
+
+            if (opcion < 1 || opcion > partidosDisponibles.size()) {
+                String entrada = teclado.leerTexto("Número inválido. Presioná cualquier tecla para continuar o 'F' para cancelar:");
+                if (entrada.equalsIgnoreCase("F")) {
+                    return Navegacion.finalizar();
+                }
+
             } else {
-                Partido partidoSeleccionado = lista.get(opcion - 1);
-                hayPartidoSeleccionado = true;
-                resultado = Navegacion.navegar("DetallePartido", Map.of("partidoSeleccionado", partidoSeleccionado));
+                Partido partidoSeleccionado = partidosDisponibles.get(opcion - 1);
+                return Navegacion.navegar(
+                        PantallaDetallePartido.class.getSimpleName(),
+                        Map.of("partidoSeleccionado", partidoSeleccionado,
+                                "jugadorLogueado", jugadorLogueado)
+                );
             }
+        }
+    }
 
-        }while(!hayPartidoSeleccionado && !cancelarVerDetalle);
-
-        return resultado;
+    private void mostrarListadoDePartidos(List<Partido> lista) {
+        System.out.println("Partidos disponibles");
+        System.out.println("#".repeat(50));
+        int i = 1;
+        for (Partido partido : lista) {
+            System.out.printf(
+                    "%d - Nombre: %s | Duración: %s | Jugadores: %d | Faltan: %d | Organizador: %s%n",
+                    i++,
+                    partido.getTipo(),
+                    partido.getDuracion(),
+                    partido.getCantJugadores(),
+                    partido.obtenerCuantosJugadoresFaltan(),
+                    partido.getOrganizador().getEmail()
+            );
+        }
+        System.out.println();
     }
 }

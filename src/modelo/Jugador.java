@@ -2,24 +2,23 @@ package modelo;
 
 import Repository.JugadorRepositorio;
 
-public class Jugador implements Suscriber {
-    String nombre;
-    String email;
-    String contrasena;
-    String deporteFavorito;
-    Nivel nivelJuego;
+public class Jugador implements Suscriber, Usuario {
+    private String nombre;
+    private String email;
+    private String contrasena;
+    private String deporteFavorito;
+    private Nivel nivelJuego;
     Ubicacion zona;
     Partido partido;
     JugadorRepositorio repositorio;
 
-    public Jugador(String nombre, String email, String contrasena,String deporteFavorito) {
+    public Jugador(String nombre, String email, String contrasena,String deporteFavorito, Nivel nivelJuego) {
         this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;
         this.deporteFavorito = deporteFavorito;
         this.nivelJuego = nivelJuego;
         this.zona = zona;
-        this.partido = partido;
     }
 
     public void buscarPartido(Ubicacion zona){

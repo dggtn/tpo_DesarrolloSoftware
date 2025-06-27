@@ -12,8 +12,8 @@ public class Inicio extends Pantalla {
             C - Salir
             """;
         Map<Character, String> opciones = Map.of(
-                'A', "SignUp",
-                'B', "Login",
+                'A', SignUp.class.getSimpleName(),
+                'B', Login.class.getSimpleName(),
                 'C', "Fin"
         );
         String destino = Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);

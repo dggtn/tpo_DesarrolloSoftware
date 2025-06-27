@@ -1,6 +1,10 @@
 package vista;
 
 import controlador.RegistroController;
+import modelo.Jugador;
+import modelo.Nivel;
+
+import java.util.Map;
 
 
 public class SignUp extends Pantalla {
@@ -23,13 +27,30 @@ public class SignUp extends Pantalla {
         String contrasena = teclado.leerLinea();
         registro.setContrasena(contrasena);
 
-        System.out.println("Ingresa tudeporte favorito:");
+        System.out.println("Ingresa tu deporte favorito:");
         String deporteFavorito = teclado.leerLinea();
         registro.setDeporteFavorito(deporteFavorito);
 
-        registro.finalizarRegistro();
+        System.out.println("Ingresa tu nivel (P para Principiante, I para intermedio y A para Avanzado):");
+        String nivel = teclado.leerLinea();
+        Nivel nivelJugador;
+        switch (nivel) {
+            case "P":
+                nivelJugador = Nivel.PRINCIPIANTE;
+                break;
+            case "I":
+                nivelJugador = Nivel.INTERMEDIO;
+            case "A":
+                nivelJugador = Nivel.AVANZADO;
+                break;
+            default:
+                nivelJugador = Nivel.SIN_DEFINIR;
+        }
+        registro.setNivelJuego(nivelJugador);
 
-        return Navegacion.navegar("Home");
+        Jugador jugador = registro.finalizarRegistro();
+
+        return Navegacion.navegar(Home.class.getSimpleName(), Map.of("jugadorLoegueado", jugador));
     }
 }
 

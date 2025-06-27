@@ -1,6 +1,8 @@
 package vista;
 
 import controlador.CrearPartidoController;
+import modelo.Jugador;
+
 import java.time.LocalTime;
 
 public class PantallaCrearPartido extends Pantalla {
@@ -33,8 +35,10 @@ public class PantallaCrearPartido extends Pantalla {
         );
         crearPartidoController.setHoraInicio(horaInicio);
 
-        crearPartidoController.crearPartido();
+        Jugador jugadorLogueado = (Jugador) origen.obtenerDelContexto("jugadorLogueado");
 
-        return Navegacion.navegar("Home");
+        crearPartidoController.crearPartido(jugadorLogueado);
+
+        return Navegacion.navegar(Home.class.getSimpleName(), origen.getContexto());
     }
 }

@@ -19,10 +19,10 @@ public class RegistroController {
         this.repositorio = repositorio;
     }
 
-    public void finalizarRegistro(){
-        Jugador jugador = new Jugador(nombre, email, contrasena,deporteFavorito);
+    public Jugador finalizarRegistro(){
+        Jugador jugador = new Jugador(nombre, email, contrasena, deporteFavorito, nivelJuego);
         repositorio.guardarJugador(jugador);
-        Usuario.logear(nombre, email);
+        return jugador;
     }
 
     public void setNombre(String nombre) {

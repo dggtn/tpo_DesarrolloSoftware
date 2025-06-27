@@ -3,5 +3,6 @@ package modelo;
 public enum Nivel {
     PRINCIPIANTE,
     INTERMEDIO,
-    AVANZADO
+    AVANZADO,
+    SIN_DEFINIR;
 }
