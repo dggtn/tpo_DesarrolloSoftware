@@ -1,7 +1,6 @@
 package Repository;
 
-import modelo.Jugador;
-import modelo.Nivel;
+import modelo.jugadores.Jugador;
 
 import java.util.ArrayList;
 import java.util.List;

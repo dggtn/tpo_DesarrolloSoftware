@@ -1,7 +1,7 @@
 package vista;
 
 import controlador.CrearPartidoController;
-import modelo.Jugador;
+import modelo.jugadores.Jugador;
 
 import java.time.LocalTime;
 

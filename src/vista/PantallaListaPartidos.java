@@ -1,8 +1,8 @@
 package vista;
 
 import controlador.BusquedaController;
-import modelo.Jugador;
-import modelo.Partido;
+import modelo.jugadores.Jugador;
+import modelo.partidos.Partido;
 
 import java.util.List;
 import java.util.Map;

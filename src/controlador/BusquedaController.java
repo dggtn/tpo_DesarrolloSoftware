@@ -1,8 +1,8 @@
 package controlador;
 
 import Repository.PartidoRepositorio;
-import modelo.Jugador;
-import modelo.Partido;
+import modelo.jugadores.Jugador;
+import modelo.partidos.Partido;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,7 +1,7 @@
 package vista;
 
 import controlador.LoginController;
-import modelo.Jugador;
+import modelo.jugadores.Jugador;
 
 import java.util.Map;
 import java.util.Optional;

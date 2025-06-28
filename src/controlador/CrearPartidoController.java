@@ -3,6 +3,10 @@ package controlador;
 import Repository.JugadorRepositorio;
 import Repository.PartidoRepositorio;
 import modelo.*;
+import modelo.emparejamiento.EstrategiaDeEmparejamiento;
+import modelo.jugadores.Jugador;
+import modelo.notificaciones.Notificador;
+import modelo.partidos.Partido;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -50,6 +54,7 @@ public class CrearPartidoController {
         Partido partido = new Partido( tipoDeDeporte,  cantidadDeJugadores, duracion, horaInicio, jugadorLogueado);
         partido.agregarJugador(jugadorLogueado);
         repositorioDePartido.guardarPartido(partido);
+        partido.agregarObservador(notificador);
 
         List<Jugador> interesados = repositorioDeJugadores.buscarPorDeporteFavorito(tipoDeDeporte);
         interesados = interesados.stream().filter(jugador -> !jugador.getEmail().equals(jugadorLogueado.getEmail())).collect(Collectors.toList());

@@ -1,10 +1,8 @@
 package controlador;
 
 import Repository.JugadorRepositorio;
-import modelo.Deporte;
-import modelo.Jugador;
-import modelo.Nivel;
-import modelo.Usuario;
+import modelo.jugadores.Jugador;
+import modelo.jugadores.Nivel;
 
 public class RegistroController {
 

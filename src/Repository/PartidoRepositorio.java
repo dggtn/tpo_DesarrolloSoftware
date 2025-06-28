@@ -1,7 +1,6 @@
 package Repository;
 
-import modelo.Estado;
-import modelo.Partido;
+import modelo.partidos.Partido;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class PartidoRepositorio {
     }
 
     public List<Partido> obtenerPartidosPorEstado (String nombreEstado){
-        return listaPartidos.stream().filter(partido -> partido.getEstado().getNombre().equals(nombreEstado)).collect(Collectors.toList());
+        return listaPartidos.stream().filter(partido -> partido.getEstado().nombre().equals(nombreEstado)).collect(Collectors.toList());
 
     }
 }

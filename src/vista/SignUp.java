@@ -1,8 +1,8 @@
 package vista;
 
 import controlador.RegistroController;
-import modelo.Jugador;
-import modelo.Nivel;
+import modelo.jugadores.Jugador;
+import modelo.jugadores.Nivel;
 
 import java.util.Map;
 

@@ -1,6 +1,5 @@
 package vista;
-import modelo.Jugador;
-import modelo.Usuario;
+import modelo.jugadores.Jugador;
 
 import java.util.Map;
 
