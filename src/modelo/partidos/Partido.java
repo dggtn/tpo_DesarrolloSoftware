@@ -22,7 +22,7 @@ public class Partido {
     private List<Jugador> jugadoresInscriptos;
     private List<ObservadorDePartido> observadores;
 
-    public Partido(String tipo, int cantJugadores, String duracion, LocalTime horario, Usuario organizador) {
+    public Partido(String tipo, int cantJugadores, String duracion, LocalTime horario, Usuario organizador, EstrategiaDeEmparejamiento estrategia) {
         this.tipo = tipo;
         this.cantJugadores = cantJugadores;
         this.duracion = duracion;
@@ -31,6 +31,7 @@ public class Partido {
         this.jugadoresInscriptos = new ArrayList<>();
         this.estado = new Inicial(this);
         this.observadores = new ArrayList<>();
+        this.estrategia = estrategia;
     }
 
     public void configurarPartido(){
@@ -139,6 +140,18 @@ public class Partido {
 
     public void agregarObservador(ObservadorDePartido observador) {
         this.observadores.add(observador);
+    }
+
+    public boolean puedeUnirse(Jugador jugador) {
+        return this.estrategia.pueddeUnirse((jugador));
+    }
+
+    public void participacionAceptada() {
+        this.estado.participacionAceptada();
+    }
+
+    public void actualizar() {
+        this.estado.actualizar();
     }
 }
 

@@ -18,14 +18,16 @@ public class Home extends Pantalla {
         String menu = """
             A - Crear partido
             B - Buscar partidos dónde falten jugadores
-            C - Cerrar sesión
-            D - Salir
+            C - Revisar confirmaciones pedientes
+            D - Cerrar sesión
+            E - Salir
             """;
         Map<Character, String> opciones = Map.of(
                 'A', PantallaCrearPartido.class.getSimpleName(),
                 'B', PantallaListaPartidos.class.getSimpleName(),
-                'C', CerrarSesion.class.getSimpleName(),
-                'D', "Fin"
+                'C', PantallaConfirmacionesPendientes.class.getSimpleName(),
+                'D', CerrarSesion.class.getSimpleName(),
+                'E', "Fin"
         );
         String destino = Menu.mostrarMenu(mensajeBienvenida, menu, opciones, teclado);
         return Navegacion.navegar(destino, origen.getContexto());

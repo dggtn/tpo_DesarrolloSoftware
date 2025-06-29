@@ -13,6 +13,14 @@ public abstract class EstadoPartido {
 
     public abstract String nombre();
     public void inscribirJugador(Jugador jugador) {
-        System.err.println("Ya no se aceptan jugadores para este partido");
+        System.err.println("No se aceptan jugadores para este partido");
+    }
+
+    public void participacionAceptada() {
+        System.err.println("No se aceptan participaciones para este partido");
+    }
+
+    public void actualizar() {
+        // Nada
     }
 }

@@ -3,6 +3,7 @@ package modelo.jugadores;
 import modelo.Suscriber;
 import modelo.Ubicacion;
 import modelo.Usuario;
+import modelo.partidos.ConfirmacionParticipacion;
 import modelo.partidos.Partido;
 import modelo.partidos.estados.EstadoPartido;
 
@@ -18,7 +19,7 @@ public class Jugador implements Suscriber, Usuario {
     Ubicacion zona;
 
     private List<Partido> partidosInscriptos;
-
+    private List<ConfirmacionParticipacion> confirmacionesPendientes;
 
     public Jugador(String nombre, String email, String contrasena,String deporteFavorito, Nivel nivelJuego) {
         this.nombre = nombre;
@@ -28,6 +29,7 @@ public class Jugador implements Suscriber, Usuario {
         this.nivelJuego = nivelJuego;
         this.zona = zona;
         this.partidosInscriptos = new ArrayList<>();
+        this.confirmacionesPendientes = new ArrayList<>();
     }
 
     public void buscarPartido(Ubicacion zona){
@@ -120,6 +122,14 @@ public class Jugador implements Suscriber, Usuario {
     @Override
     public void actualizarPartido(Partido partido) {
 
+    }
+
+    public void agregarConfirmacionPendiente(ConfirmacionParticipacion confirmacionParticipacion) {
+        this.confirmacionesPendientes.add(confirmacionParticipacion);
+    }
+
+    public List<ConfirmacionParticipacion> obtenerConfirmacionesPendientes() {
+        return confirmacionesPendientes;
     }
 }
 

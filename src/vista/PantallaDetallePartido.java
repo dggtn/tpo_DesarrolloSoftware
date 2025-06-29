@@ -24,7 +24,12 @@ public class PantallaDetallePartido extends Pantalla {
 
                 switch (opcion) {
                     case "S":
-                        jugadorLogueado.inscribirsePartido(partidoSeleccionado);
+                        if (partidoSeleccionado.puedeUnirse(jugadorLogueado)) {
+                            jugadorLogueado.inscribirsePartido(partidoSeleccionado);
+                        } else {
+                            System.out.println("No cumplís los requisitos de nivel. Elegí otro partido de la lista.");
+                            return Navegacion.navegar(PantallaListaPartidos.class.getSimpleName(), Map.of("jugadorLogueado", jugadorLogueado));
+                        }
                     case "N":
                     case "F":
                         return siguiente;
@@ -34,7 +39,6 @@ public class PantallaDetallePartido extends Pantalla {
             }
         }
 
-        teclado.leerTexto("Presiona cualquier tecla para continuar");
         return siguiente;
     }
 

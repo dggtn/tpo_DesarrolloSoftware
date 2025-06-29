@@ -22,5 +22,9 @@ public class PartidoRepositorio {
         return listaPartidos.stream().filter(partido -> partido.getEstado().nombre().equals(nombreEstado)).collect(Collectors.toList());
 
     }
+
+    public void actualizarPartidos() {
+        this.listaPartidos.forEach(partido -> partido.actualizar());
+    }
 }
 

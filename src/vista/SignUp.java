@@ -50,7 +50,7 @@ public class SignUp extends Pantalla {
 
         Jugador jugador = registro.finalizarRegistro();
 
-        return Navegacion.navegar(Home.class.getSimpleName(), Map.of("jugadorLoegueado", jugador));
+        return Navegacion.navegar(Home.class.getSimpleName(), Map.of("jugadorLogueado", jugador));
     }
 }
 

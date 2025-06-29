@@ -2,9 +2,9 @@ package modelo.emparejamiento;
 
 import modelo.jugadores.Jugador;
 
-public class EmparejarPorCercania implements EstrategiaDeEmparejamiento{
+public class EmparejarPorCercania implements EstrategiaDeEmparejamiento {
     @Override
-    public void emparejar(Jugador jugador) {
-
+    public boolean pueddeUnirse(Jugador jugador) {
+        return false;
     }
 }
